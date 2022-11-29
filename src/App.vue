@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComp @search="searchMovie"/>
+    <HeaderComp @headerToApp="searchMovie"/>
     <MainComp/>
   </div>
 </template>
@@ -19,24 +19,34 @@ export default {
   },
   Data(){
     return{
-      filter: ''
+      filter: '',
+      movies: null,
+      shows: null
     }
   },
   methods: {
-    getApi(){
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=`)
+    // calling api query
+    getApi(filter){
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=${filter}`)
       .then(response => {
-        this.lello = response
-        console.log(this.lello)
+        // movies
+        this.movies = response.data.results
+        console.log(this.movies)
+      }),
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=${filter}`)
+      .then(response => {
+        // shows
+        this.shows = response.data.results
+        console.log(this.shows)
       })
+    
+
     },
     searchMovie(filtered){
-      this.filter = filtered
-      console.log(this.filter)
+      this.getApi(filtered)
     }
   },
   mounted(){
-    
   }
 }
 </script>

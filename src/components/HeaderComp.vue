@@ -4,7 +4,7 @@
       <img src="../assets/logo.png" alt="logo" class="h-100">
       <input type="text" placeholder="Cerca un film"
        v-model="searchInput"
-       @keyup.enter="$emit('search', searchInput)">
+       @keyup.enter="$emit('headerToApp', searchInput)">
       <span>
         <font-awesome-icon icon="fa-solid fa-user"/>
       </span>
