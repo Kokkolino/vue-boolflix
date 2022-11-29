@@ -2,8 +2,12 @@
   <div class="element-bg">
     <nav class="f-bw h-100">
       <img src="../assets/logo.png" alt="logo" class="h-100">
-      <input type="text" placeholder="Cerca un film">
-      <i class="fa-solid fa-user h-100"></i>
+      <input type="text" placeholder="Cerca un film"
+       v-model="searchInput"
+       @keyup.enter="$emit('search', searchInput)">
+      <span>
+        <font-awesome-icon icon="fa-solid fa-user"/>
+      </span>
     </nav>
   </div>
 </template>
@@ -11,6 +15,11 @@
 <script>
 export default {
   name: 'HeaderComp',
+  data(){
+    return {
+      searchInput: ''
+    }
+  }
 }
 </script>
 
@@ -28,5 +37,15 @@ export default {
     padding: 5px;
     border-radius: 10px;
     border: none;
+  }
+
+  span{
+    cursor: pointer;
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+    *{
+      height: 40px;
+    }
   }
 </style>

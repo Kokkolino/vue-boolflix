@@ -1,20 +1,42 @@
 <template>
   <div id="app">
-    <HeaderComp/>
+    <HeaderComp @search="searchMovie"/>
     <MainComp/>
   </div>
 </template>
 
 <script>
+
 import HeaderComp from './components/HeaderComp.vue'
 import MainComp from './components/MainComp.vue'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
     HeaderComp,
     MainComp
+  },
+  Data(){
+    return{
+      filter: ''
+    }
+  },
+  methods: {
+    getApi(){
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=`)
+      .then(response => {
+        this.lello = response
+        console.log(this.lello)
+      })
+    },
+    searchMovie(filtered){
+      this.filter = filtered
+      console.log(this.filter)
+    }
+  },
+  mounted(){
+    
   }
 }
 </script>
@@ -66,6 +88,10 @@ export default {
     height: 100%;
   }
   
+  .h-80px{
+    height: 80px;
+  }
+
   .w-75{
     width: 75%;
     margin: auto;
