@@ -105,16 +105,56 @@ export default {
     margin: auto;
   }
   // cards classes
+  $cardWidth: calc(75vw / 6);
   .card{
-    width: 329px;
-    min-height: 193px;
+    width: $cardWidth;
+    height: calc($cardWidth * 1.47);
     padding: 5px;
     display: inline-block;
     margin: 0 10px;
+    perspective: 1000px;
   }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+
+  .card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    color: black;
+  }
+
+  .flip-card-back {
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .elem-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   //Scroll classes
   .scroll{
-    padding: 5px;
+    padding: 20px;
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;

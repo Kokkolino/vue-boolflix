@@ -41,4 +41,6 @@ import ShowsComp from './elements/ShowsComp.vue'
     h1{
         margin-top: 40px;
     }
+
+
 </style>
