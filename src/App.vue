@@ -104,8 +104,13 @@ export default {
     width: 75%;
     margin: auto;
   }
+
   // cards classes
   $cardWidth: calc(75vw / 6);
+  .word-break{
+    width: $cardWidth;
+    white-space: nowrap;
+  }
   .card{
     width: $cardWidth;
     height: calc($cardWidth * 1.47);
@@ -144,6 +149,7 @@ export default {
   .flip-card-back {
     color: white;
     transform: rotateY(180deg);
+    overflow-wrap: break-word;
   }
 
   .elem-img{

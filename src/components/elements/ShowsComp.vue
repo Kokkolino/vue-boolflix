@@ -3,7 +3,8 @@
     <div class="card element-bg">
         <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img class="elem-img" :src="`https://image.tmdb.org/t/p/w342/${showsMain2Elem.poster_path}`" alt="Avatar">
+                <img v-if="showsMain2Elem.poster_path != null" class="elem-img" :src="`https://image.tmdb.org/t/p/w342/${showsMain2Elem.poster_path}`" alt="Avatar">
+                <img v-else class="elem-img" src="../../assets/Image_not_available.png" alt="">
             </div>
             <div class="flip-card-back element-bg">
                 <h1>John Doe</h1> 
