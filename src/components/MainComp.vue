@@ -1,7 +1,19 @@
 <template>
     <div class="w-75">
-        <MoviesComp/>
-        <ShowsComp/>
+        <h1>Movies</h1>
+        <!-- movies -->
+        <div class="scroll">
+            <MoviesComp v-for="(element, index) in moviesApp2Main" 
+            :moviesMain2Elem="element" 
+            :key="index"/>
+        </div>
+        <!-- tv shows -->
+        <h1>Shows</h1>
+        <div class="scroll">
+            <ShowsComp v-for="(element, index) in showsApp2Main" 
+            :showsMain2Elem="element" 
+            :key="index"/>
+        </div>
     </div>
 </template>
 
@@ -13,12 +25,20 @@ import ShowsComp from './elements/ShowsComp.vue'
         components: {
             MoviesComp,
             ShowsComp
-        }
+        },
+        props:{
+            moviesApp2Main: Array,
+            showsApp2Main: Array
+        },
     }
 </script>
 
 <style lang="scss" scoped>
     div{
-        margin-top: 25px;
+        color: white;
+    }
+
+    h1{
+        margin-top: 40px;
     }
 </style>

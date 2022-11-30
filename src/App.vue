@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComp @headerToApp="searchMovie"/>
-    <MainComp/>
+    <MainComp :moviesApp2Main="moviesArray" :showsApp2Main="showsArray"/>
   </div>
 </template>
 
@@ -17,11 +17,10 @@ export default {
     HeaderComp,
     MainComp
   },
-  Data(){
+  data(){
     return{
-      filter: '',
-      movies: null,
-      shows: null
+      moviesArray: [],
+      showsArray: []
     }
   },
   methods: {
@@ -30,18 +29,17 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=${filter}`)
       .then(response => {
         // movies
-        this.movies = response.data.results
-        console.log(this.movies)
+        this.moviesArray = response.data.results
       }),
       axios.get(`https://api.themoviedb.org/3/search/tv?api_key=c74eff81ff57e4d38b96c0c7d66c58a5&query=${filter}`)
       .then(response => {
         // shows
-        this.shows = response.data.results
-        console.log(this.shows)
+        this.showsArray = response.data.results
       })
     
 
     },
+    // emit
     searchMovie(filtered){
       this.getApi(filtered)
     }
@@ -108,7 +106,23 @@ export default {
   }
   // cards classes
   .card{
-    flex-basis: calc(100% / 5);
-    height: 300px;
+    width: 300px;
+    padding: 5px;
+    display: inline-block;
+    margin: 0 10px;
   }
+  //Scroll classes
+  .scroll{
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  div.scrollmenu span {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+}
 </style>

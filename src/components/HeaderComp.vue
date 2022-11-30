@@ -1,10 +1,13 @@
 <template>
   <div class="element-bg">
     <nav class="f-bw h-100">
+      <!-- logo -->
       <img src="../assets/logo.png" alt="logo" class="h-100">
+      <!-- input -->
       <input type="text" placeholder="Cerca un film"
        v-model="searchInput"
        @keyup.enter="$emit('headerToApp', searchInput)">
+       <!-- user -->
       <span>
         <font-awesome-icon icon="fa-solid fa-user"/>
       </span>
