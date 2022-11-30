@@ -1,7 +1,8 @@
 <template>
     <!-- cards here -->
     <div class="card element-bg c-white">
-        <img :src="`http://image.tmdb.org/t/p/w342/${showsMain2Elem.backdrop_path}`" alt="">
+        <img v-if="(showsMain2Elem.backdrop_path != null)" :src="`http://image.tmdb.org/t/p/w342/${showsMain2Elem.backdrop_path}`" alt="">
+        <img v-else src="../../assets/Image_not_available.png" alt="">
     </div>
 </template>
 
@@ -34,5 +35,9 @@
     span{
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    h4{
+        opacity: 0.4;
     }
 </style>

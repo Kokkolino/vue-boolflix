@@ -106,7 +106,8 @@ export default {
   }
   // cards classes
   .card{
-    width: 300px;
+    width: 329px;
+    min-height: 193px;
     padding: 5px;
     display: inline-block;
     margin: 0 10px;
