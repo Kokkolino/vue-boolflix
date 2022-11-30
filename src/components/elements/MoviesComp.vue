@@ -1,8 +1,13 @@
 <template>
     <!-- cards here -->
     <div class="card element-bg c-white">
-        <img v-if="(moviesMain2Elem.backdrop_path != null)" :src="`http://image.tmdb.org/t/p/w342/${moviesMain2Elem.backdrop_path}`" alt="">
-        <img v-else src="../../assets/Image_not_available.png" alt="">
+        <div class="bg-image">
+            <img v-if="(moviesMain2Elem.backdrop_path != null)" :src="`http://image.tmdb.org/t/p/w342/${moviesMain2Elem.backdrop_path}`" alt="">
+            <img v-else src="../../assets/Image_not_available.png" alt="">
+        </div>
+        <div class="info">
+            <h2>ciao</h2>
+        </div>
     </div>
 </template>
 
@@ -26,13 +31,22 @@
         max-height: 100%;
     }
 
-    span{
-        background-repeat: no-repeat;
-        background-size: cover;
+    .info{
+        width: 324px;
+        height: 188px;
+        display: none;
     }
 
-    h4{
-        opacity: 0.4;
+    .bg-image{
+        width: 100%;
+        height: 100%;
     }
-
+    .card:hover{
+        .bg-image{
+            display: none;
+        }
+        .info{
+            display: block;
+        }
+    }
 </style>
