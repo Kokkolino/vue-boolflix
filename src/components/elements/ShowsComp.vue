@@ -1,6 +1,6 @@
 <template>
     <!-- cards here -->
-    <div class="card element-bg">
+    <div class="flip-card element-bg">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <img v-if="showsMain2Elem.poster_path != null" class="elem-img" :src="`https://image.tmdb.org/t/p/w342/${showsMain2Elem.poster_path}`" alt="Avatar">

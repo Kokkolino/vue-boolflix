@@ -106,12 +106,9 @@ export default {
   }
 
   // cards classes
-  $cardWidth: calc(75vw / 6);
-  .word-break{
-    width: $cardWidth;
-    white-space: nowrap;
-  }
-  .card{
+  $cardWidth: 255px;
+
+  .flip-card{
     width: $cardWidth;
     height: calc($cardWidth * 1.47);
     padding: 5px;
@@ -130,7 +127,7 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
 
-  .card:hover .flip-card-inner {
+  .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
   }
 
@@ -158,12 +155,18 @@ export default {
     object-fit: contain;
   }
 
+  .word-wrap{
+    width: $cardWidth;
+    overflow-wrap: break-word;
+  }
+
   //Scroll classes
   .scroll{
     padding: 20px;
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
+    overflow-y: hidden;
   }
 
   div.scrollmenu span {
