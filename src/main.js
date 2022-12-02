@@ -3,8 +3,13 @@ import App from './App.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret, faUser } from '@fortawesome/free-solid-svg-icons'
-library.add(faUserSecret, faUser)
+import { faUserSecret} from '@fortawesome/free-solid-svg-icons'
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons'
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons'
+import { faStarHalfStroke } from '@fortawesome/free-regular-svg-icons';
+
+library.add(faUserSecret, faStarSolid, faStarRegular, faStarHalfStroke)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false

@@ -16,8 +16,18 @@
                 <br>
                 <img :src="`https://www.countryflagicons.com/FLAT/32/${(moviesMain2Elem.original_language == 'en') ? 'GB' : ((moviesMain2Elem.original_language == 'ja') ? 'JP' : moviesMain2Elem.original_language.toUpperCase())}.png`">
                 <div>
+                    <div>
+                        <span v-for="n in fulls" :key="`a${n}`">
+                            <font-awesome-icon icon="fa-solid fa-star" />
+                        </span>
+                        <span v-if="this.halfs">
+                            <font-awesome-icon  icon="fa-regular fa-star-half-stroke"/>
+                        </span>
+                        <span v-for="n in empty" :key="`b${n}`">
+                            <font-awesome-icon icon="fa-regular fa-star" />
+                        </span>
+                    </div>
                     {{moviesMain2Elem.vote_average}}
-                    {{stars()}}
                 </div>
             </div>
         </div>
@@ -25,7 +35,6 @@
 </template>
 
 <script>
-
     export default {
         name: 'MoviesComp',
         props:{
@@ -33,39 +42,32 @@
         },
         data(){
             return{
-                vote: '', 
-                half: '',
+                fulls: 0,
+                halfs: false,
+                empty: 5,
+                decimals: (this.moviesMain2Elem.vote_average / 2) % 1,
             }
         },
         methods: {
             stars(){
-                this.vote = this.moviesMain2Elem.vote_average / 2;
-                this.half = this.vote % 1;
-                let i= 1;
-                let arr = [];
-                // filled stars
-                for(i; i< this.vote; i++){
-                    arr.push("2")
+                this.fulls = parseInt(this.moviesMain2Elem.vote_average / 2);
+                this.empty += - this.fulls 
+                if(this.decimals > 0.39 && this.decimals < 0.85){
+                    this.halfs = true
+                    this.empty--
                 }
-                // half stars
-                if(this.half > 0.39 && this.half < 0.91){
-                    arr.push("1")
-                    i++
-                }
-                if (this.half >= 0.91) {
-                    arr.push("2")
-                    i++
-                } else {
-                    arr.push("0")
-                    i++
-                }
-                // empty stars
-                for(i; i<= 5; i++){
-                    arr.push("0")
-                }
-                return arr
+                else if (this.decimals >= 0.85) {
+                    this.fulls++
+                    this.empty--
+                } 
+                console.log(this.decimals)
+                return               
             }
+        },
+        mounted(){
+            this.stars()
         }
+
     }
 </script>
 

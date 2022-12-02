@@ -9,7 +9,7 @@
        @keyup.enter="$emit('headerToApp', searchInput)">
        <!-- user -->
       <span>
-        <font-awesome-icon icon="fa-solid fa-user"/>
+        
       </span>
     </nav>
   </div>
