@@ -106,7 +106,7 @@ export default {
   }
 
   // cards classes
-  $cardWidth: 255px;
+  $cardWidth: 11vw;
 
   .flip-card{
     width: $cardWidth;
